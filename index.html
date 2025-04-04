@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeOn Campus</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            background-color: #004d99;
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .logo span {
+            color: #ffcc00;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: #003366;
+            padding: 0.5rem 0;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style-type: none;
+        }
+        
+        nav ul li {
+            margin-right: 1rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        nav ul li a:hover, nav ul li a.active {
+            background-color: #004d99;
+        }
+        
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+            min-height: calc(100vh - 200px);
+        }
+        
+        section {
+            margin-bottom: 2rem;
+        }
+        
+        .page {
+            display: none;
+        }
+        
+        .page.active {
+            display: block;
+        }
+        
+        h1 {
+            color: #004d99;
+            margin-bottom: 1rem;
+            font-size: 2.2rem;
+        }
+        
+        h2 {
+            color: #004d99;
+            margin: 1.5rem 0 1rem;
+            font-size: 1.8rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .emergency-card {
+            background-color: #ffeaea;
+            border-left: 4px solid #ff5252;
+        }
+        
+        .hero {
+            background-color: #004d99;
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #ffcc00;
+            color: #333;
+            padding: 0.75rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #e6b800;
+        }
+        
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .resource-item {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .resource-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .resource-item h3 {
+            color: #004d99;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #004d99;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .social-icons {
+            margin: 1rem 0;
+        }
+        
+        .social-icons a {
+            color: white;
+            margin: 0 0.5rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin-right: 0;
+                margin-bottom: 0.5rem;
+            }
+            
+            .hero {
+                padding: 2rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">Safe<span>On</span>Campus</div>
+        </div>
+    </header>
+    
+    <nav>
+        <div class="container">
+            <ul>
+                <li><a href="#home" class="active" onclick="showPage('home')">Home</a></li>
+                <li><a href="#safety-resources" onclick="showPage('safety-resources')">Safety Resources</a></li>
+                <li><a href="#emergency-procedures" onclick="showPage('emergency-procedures')">Emergency Procedures</a></li>
+                <li><a href="#contact" onclick="showPage('contact')">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <main>
+        <div class="container">
+            <!-- Home Page -->
+            <div id="home" class="page active">
+                <div class="hero">
+                    <div class="hero-content">
+                        <h1>Welcome to SafeOn Campus</h1>
+                        <p>Your comprehensive resource for campus safety information and emergency procedures</p>
+                        <a href="#safety-resources" class="btn" onclick="showPage('safety-resources')">Explore Resources</a>
+                    </div>
+                </div>
+                
+                <section>
+                    <h2>Our Mission</h2>
+                    <p>SafeOn Campus is dedicated to providing students, faculty, and staff with the resources, information, and training needed to create a safe and secure campus environment. We believe that safety is a shared responsibility, and we work together to build a culture of preparedness and awareness.</p>
+                </section>
+                
+                <section>
+                    <h2>Key Safety Features</h2>
+                    <div class="resource-grid">
+                        <div class="resource-item">
+                            <h3>24/7 Campus Security</h3>
+                            <p>Our trained security officers patrol campus grounds around the clock to ensure your safety.</p>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Emergency Notification System</h3>
+                            <p>Receive timely alerts about campus emergencies via text, email, and phone calls.</p>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Safety Escort Service</h3>
+                            <p>Request a security escort for safe travel across campus during evening hours.</p>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Safety Workshops</h3>
+                            <p>Participate in regular safety training sessions and preparedness drills.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <div class="card emergency-card">
+                        <h2>Emergency Contact</h2>
+                        <p>Campus Security: <strong>555-123-4567</strong> (24/7)</p>
+                        <p>For immediate emergency assistance: <strong>911</strong></p>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Safety Resources Page -->
+            <div id="safety-resources" class="page">
+                <h1>Campus Safety Resources</h1>
+                
+                <section>
+                    <h2>Personal Safety Tips</h2>
+                    <div class="card">
+                        <ul>
+                            <li>Always be aware of your surroundings and trust your instincts</li>
+                            <li>Travel in groups when possible, especially at night</li>
+                            <li>Keep your personal belongings secure and within sight</li>
+                            <li>Program emergency contacts into your phone for quick access</li>
+                            <li>Share your class and activity schedule with trusted friends or family</li>
+                            <li>Use well-lit and populated paths when walking at night</li>
+                            <li>Report suspicious activities or individuals to campus security</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2>Available Services</h2>
+                    <div class="resource-grid">
+                        <div class="resource-item">
+                            <h3>Campus Escort Service</h3>
+                            <p>Available from 7:00 PM to 3:00 AM daily. Call 555-123-8900 to request an escort.</p>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Counseling Center</h3>
+                            <p>Provides confidential support for students experiencing crisis or trauma. Located in the Student Center, Room 302.</p>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Blue Light Emergency Phones</h3>
+                            <p>Located throughout campus, these phones provide direct access to campus security in case of emergency.</p>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Safety App</h3>
+                            <p>Download our free campus safety app for quick access to resources and virtual safe walk features.</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2>Safety Education Programs</h2>
+                    <div class="card">
+                        <p>SafeOn Campus offers a variety of educational programs throughout the academic year:</p>
+                        <ul>
+                            <li><strong>Self-Defense Workshops</strong>: Monthly basic self-defense techniques training</li>
+                            <li><strong>Active Threat Response Training</strong>: Quarterly sessions on responding to active threats</li>
+                            <li><strong>Fire Safety Training</strong>: Proper use of fire extinguishers and evacuation procedures</li>
+                            <li><strong>Bystander Intervention Training</strong>: Learn how to safely intervene in potentially harmful situations</li>
+                            <li><strong>Alcohol and Drug Awareness</strong>: Educational sessions on substance abuse and responsible behavior</li>
+                        </ul>
+                        <p>Check the campus events calendar for upcoming sessions and registration information.</p>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Emergency Procedures Page -->
+            <div id="emergency-procedures" class="page">
+                <h1>Emergency Procedures</h1>
+                
+                <section class="card emergency-card">
+                    <h2>Important Emergency Contacts</h2>
+                    <ul>
+                        <li>Campus Security: 555-123-4567 (24/7)</li>
+                        <li>Emergency Services: 911</li>
+                        <li>Health Center: 555-123-7890</li>
+                        <li>Counseling Services Crisis Line: 555-123-9876</li>
+                        <li>Facilities Management: 555-123-4321</li>
+                    </ul>
+                </section>
+                
+                <section>
+                    <h2>Active Threat Response</h2>
+                    <div class="card">
+                        <p>If you encounter an active threat situation, remember these key actions:</p>
+                        <h3>Run</h3>
+                        <ul>
+                            <li>If there is an accessible escape path, evacuate the premises</li>
+                            <li>Leave your belongings behind</li>
+                            <li>Help others escape if possible</li>
+                            <li>Prevent others from entering the area</li>
+                            <li>Call 911 when you are safe</li>
+                        </ul>
+                        
+                        <h3>Hide</h3>
+                        <ul>
+                            <li>If evacuation is not possible, find a place to hide</li>
+                            <li>Lock and barricade doors</li>
+                            <li>Silence your cell phone</li>
+                            <li>Hide behind large objects</li>
+                            <li>Remain quiet and calm</li>
+                        </ul>
+                        
+                        <h3>Fight</h3>
+                        <ul>
+                            <li>As a last resort, and only when your life is in imminent danger</li>
+                            <li>Attempt to incapacitate the threat</li>
+                            <li>Act with physical aggression</li>
+                            <li>Improvise weapons</li>
+                            <li>Commit to your actions</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2>Fire Emergency</h2>
+                    <div class="card">
+                        <ol>
+                            <li>If you discover a fire, activate the nearest fire alarm pull station</li>
+                            <li>Call 911 and campus security at 555-123-4567</li>
+                            <li>Evacuate the building using the nearest exit</li>
+                            <li>Do not use elevators</li>
+                            <li>If trapped, close doors between you and the fire</li>
+                            <li>Signal for help from windows if possible</li>
+                            <li>Proceed to the designated assembly area for your building</li>
+                            <li>Do not re-enter the building until authorized by emergency personnel</li>
+                        </ol>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2>Medical Emergency</h2>
+                    <div class="card">
+                        <ol>
+                            <li>Call 911 for serious or life-threatening conditions</li>
+                            <li>Contact campus security at 555-123-4567</li>
+                            <li>Send someone to meet emergency responders and guide them to the location</li>
+                            <li>Do not move the injured/ill person unless they are in immediate danger</li>
+                            <li>If trained, provide appropriate first aid until help arrives</li>
+                            <li>For non-emergency medical assistance, contact the campus health center at 555-123-7890</li>
+                        </ol>
+                        <p>Automated External Defibrillators (AEDs) are located in all major campus buildings, typically near main entrances or elevators.</p>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2>Severe Weather</h2>
+                    <div class="card">
+                        <h3>Tornado</h3>
+                        <ul>
+                            <li>Move to the lowest level of the building</li>
+                            <li>Stay away from windows and exterior doors</li>
+                            <li>Seek shelter in interior hallways, stairwells, or rooms</li>
+                            <li>Crouch down and cover your head and neck</li>
+                            <li>Wait for the all-clear notification</li>
+                        </ul>
+                        
+                        <h3>Flooding</h3>
+                        <ul>
+                            <li>Avoid walking or driving through flood waters</li>
+                            <li>Move to higher ground if outside</li>
+                            <li>If indoors, move to higher floors</li>
+                            <li>Report flooding to campus security</li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+            
+            <!-- Contact Page -->
+            <div id="contact" class="page">
+                <h1>Contact Us</h1>
+                
+                <section>
+                    <div class="card">
+                        <h2>Campus Safety Department</h2>
+                        <p><strong>Location:</strong> Safety Building, 123 Campus Drive</p>
+                        <p><strong>Main Office Hours:</strong> Monday-Friday, 8:00 AM - 5:00 PM</p>
+                        <p><strong>Phone:</strong> 555-123-4567 (24/7 Emergency Line)</p>
+                        <p><strong>Administrative Line:</strong> 555-123-5678 (Business Hours)</p>
+                        <p><strong>Email:</strong> safety@safeoncampus.edu</p>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2>Meet Our Team</h2>
+                    <div class="resource-grid">
+                        <div class="resource-item">
+                            <h3>Chief of Campus Safety</h3>
+                            <p>Dr. James Wilson<br>jwilson@safeoncampus.edu<br>555-123-6789</p>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Emergency Management Director</h3>
+                            <p>Sarah Johnson<br>sjohnson@safeoncampus.edu<br>555-123-7654</p>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Safety Education Coordinator</h3>
+                            <p>Michael Chang<br>mchang@safeoncampus.edu<br>555-123-3456</p>
+                        </div>
+                        <div class="resource-item">
+                            <h3>Student Safety Liaison</h3>
+                            <p>Aisha Patel<br>apatel@safeoncampus.edu<br>555-123-2345</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2>Report a Safety Concern</h2>
+                    <div class="card">
+                        <p>For non-emergency safety concerns, please use our online reporting system or contact our office during business hours. Your reports can be submitted anonymously if preferred.</p>
+                        <p>For immediate concerns that require attention but are not emergencies, please call our 24/7 non-emergency line at 555-123-8765.</p>
+                        <p>Remember: In an emergency, always call 911 first, then notify campus security.</p>
+                    </div>
+                </section>
+                
+                <section>
+                    <h2>Feedback</h2>
+                    <div class="card">
+                        <p>We value your feedback on our safety programs and services. Please share your suggestions, concerns, or compliments with us at feedback@safeoncampus.edu.</p>
+                        <p>You can also participate in our anonymous safety perception survey, distributed each semester, to help us continuously improve our campus safety measures.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 SafeOn Campus. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#">Facebook</a>
+                <a href="#">Twitter</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+            <p>For emergencies, call Campus Security: 555-123-4567 or 911</p>
+        </div>
+    </footer>
+    
+    <script>
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.getElementsByClassName('page');
+            for (let i = 0; i < pages.length; i++) {
+                pages[i].classList.remove('active');
+            }
+            
+            // Show the selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update active nav link
+            const navLinks = document.querySelectorAll('nav ul li a');
+            for (let i = 0; i < navLinks.length; i++) {
+                navLinks[i].classList.remove('active');
+                if (navLinks[i].getAttribute('href') === '#' + pageId) {
+                    navLinks[i].classList.add('active');
+                }
+            }
+        }
+
+        // Add event listener for page load to check for hash in URL
+        document.addEventListener('DOMContentLoaded', function() {
+            // Check if there's a hash in the URL
+            const hash = window.location.hash.substring(1);
+            if (hash && document.getElementById(hash)) {
+                showPage(hash);
+            }
+        });
+    </script>
+</body>
+</html>
